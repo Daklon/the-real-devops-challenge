@@ -27,11 +27,14 @@ jobs:
         with:
           context: ./challenge-1/
           load: true
-          tags: Daklon/webserver:latest
+          tags: daklon/webserver:latest
 
       - name: Test
-        run: |
-          CI=true dive latest
+        uses: yuichielectric/dive-action@0.0.4
+        with:
+          image: "daklon/webserver:latest"
+          config-file: ${{ github.workspace }}/.dive-ci.yml
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push
         if: ${{ github.ref == 'refs/heads/main' }}
@@ -39,4 +42,4 @@ jobs:
         with:
           platforms: linux/amd64, linux/arm64
           push: true
-          tags: Daklon/webserver:latest
+          tags: daklon/webserver:latest
