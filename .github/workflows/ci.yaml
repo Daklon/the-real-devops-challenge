@@ -43,3 +43,4 @@ jobs:
           platforms: linux/amd64, linux/arm64
           push: true
           tags: daklon/webserver:latest
+          context: ./challenge-1/
