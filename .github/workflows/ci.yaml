@@ -2,6 +2,8 @@ name: ci
 
 on:
   push:
+    paths:
+    - 'challenge-1/**'
 
 jobs:
   docker:
