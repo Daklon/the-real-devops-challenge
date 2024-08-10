@@ -1,0 +1,12 @@
+image:
+  name: traefik
+  pullPolicy: IfNotPresent
+service:
+  type: NodePort
+ports:
+  web:
+    nodePort: 30080
+  websecure:
+    nodePort: 30443
+nodeSelector:
+  ingress-ready: 'true'
