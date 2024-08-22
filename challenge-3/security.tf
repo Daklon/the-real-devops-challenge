@@ -18,12 +18,12 @@ resource "aws_security_group_rule" "lb_allow_http_ipv4_ingress" {
 }
 
 resource "aws_security_group_rule" "lb_allow_http_ipv4_egress" {
-  type              = "egress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
+  type                     = "egress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.autoscaling_group.id
-  security_group_id = aws_security_group.load_balancer.id
+  security_group_id        = aws_security_group.load_balancer.id
 }
 
 resource "aws_security_group" "autoscaling_group" {
@@ -37,12 +37,12 @@ resource "aws_security_group" "autoscaling_group" {
 }
 
 resource "aws_security_group_rule" "asg_allow_http_ipv4_ingress" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.load_balancer.id
-  security_group_id = aws_security_group.autoscaling_group.id
+  security_group_id        = aws_security_group.autoscaling_group.id
 }
 
 resource "aws_security_group_rule" "asg_allow_http_ipv4_egress" {
@@ -50,7 +50,7 @@ resource "aws_security_group_rule" "asg_allow_http_ipv4_egress" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.autoscaling_group.id
 }
 
@@ -59,17 +59,17 @@ resource "aws_security_group_rule" "asg_allow_https_ipv4_egress" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.autoscaling_group.id
 }
 
 resource "aws_security_group_rule" "asg_allow_ssh_ipv4_egress" {
-  type              = "egress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
+  type                     = "egress"
+  from_port                = 22
+  to_port                  = 22
+  protocol                 = "tcp"
   source_security_group_id = aws_vpc.main.default_security_group_id
-  security_group_id = aws_security_group.autoscaling_group.id
+  security_group_id        = aws_security_group.autoscaling_group.id
 }
 
 resource "aws_security_group_rule" "asg_allow_ssh_ipv4_ingress" {
@@ -82,21 +82,21 @@ resource "aws_security_group_rule" "asg_allow_ssh_ipv4_ingress" {
 }
 
 resource "aws_security_group_rule" "asg_allow_postgres_ipv4_egress" {
-  type              = "egress"
-  from_port         = aws_rds_cluster.main.port
-  to_port           = aws_rds_cluster.main.port
-  protocol          = "tcp"
+  type                     = "egress"
+  from_port                = aws_rds_cluster.main.port
+  to_port                  = aws_rds_cluster.main.port
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.rds.id
-  security_group_id = aws_security_group.autoscaling_group.id
+  security_group_id        = aws_security_group.autoscaling_group.id
 }
 
 resource "aws_security_group_rule" "asg_allow_postgres_ipv4_ingress" {
-  type              = "ingress"
-  from_port         = aws_rds_cluster.main.port
-  to_port           = aws_rds_cluster.main.port
-  protocol          = "tcp"
+  type                     = "ingress"
+  from_port                = aws_rds_cluster.main.port
+  to_port                  = aws_rds_cluster.main.port
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.rds.id
-  security_group_id = aws_security_group.autoscaling_group.id
+  security_group_id        = aws_security_group.autoscaling_group.id
 }
 
 resource "aws_security_group" "rds" {
@@ -110,19 +110,19 @@ resource "aws_security_group" "rds" {
 }
 
 resource "aws_security_group_rule" "rds_allow_postgres_ipv4_ingress" {
-  type              = "ingress"
-  from_port         = aws_rds_cluster.main.port
-  to_port           = aws_rds_cluster.main.port
-  protocol          = "tcp"
+  type                     = "ingress"
+  from_port                = aws_rds_cluster.main.port
+  to_port                  = aws_rds_cluster.main.port
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.autoscaling_group.id
-  security_group_id = aws_security_group.rds.id
+  security_group_id        = aws_security_group.rds.id
 }
 
 resource "aws_security_group_rule" "rds_allow_postgres_ipv4_egress" {
-  type              = "egress"
-  from_port         = aws_rds_cluster.main.port
-  to_port           = aws_rds_cluster.main.port
-  protocol          = "tcp"
+  type                     = "egress"
+  from_port                = aws_rds_cluster.main.port
+  to_port                  = aws_rds_cluster.main.port
+  protocol                 = "tcp"
   source_security_group_id = aws_security_group.autoscaling_group.id
-  security_group_id = aws_security_group.rds.id
+  security_group_id        = aws_security_group.rds.id
 }

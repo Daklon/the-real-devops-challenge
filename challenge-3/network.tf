@@ -9,9 +9,9 @@ resource "aws_internet_gateway" "main" {
 resource "aws_subnet" "private" {
   for_each = var.subnets.private
 
-  vpc_id     = aws_vpc.main.id
+  vpc_id            = aws_vpc.main.id
   availability_zone = each.value["az"]
-  cidr_block = each.value["cidr"]
+  cidr_block        = each.value["cidr"]
 }
 
 resource "aws_route_table" "private" {
@@ -20,14 +20,14 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.main[each.key].id
   }
 }
 
 resource "aws_route_table_association" "private" {
   for_each = var.subnets.private
-  
+
   subnet_id      = aws_subnet.private[each.key].id
   route_table_id = aws_route_table.private[each.key].id
 }
@@ -35,9 +35,9 @@ resource "aws_route_table_association" "private" {
 resource "aws_subnet" "public" {
   for_each = var.subnets.public
 
-  vpc_id     = aws_vpc.main.id
+  vpc_id            = aws_vpc.main.id
   availability_zone = each.value["az"]
-  cidr_block = each.value["cidr"]
+  cidr_block        = each.value["cidr"]
 }
 
 resource "aws_route_table" "public" {
@@ -60,8 +60,8 @@ resource "aws_route_table_association" "public" {
 
 resource "aws_eip" "nat" {
   for_each = var.subnets.public
-  
-  domain   = "vpc"
+
+  domain = "vpc"
 }
 
 resource "aws_nat_gateway" "main" {

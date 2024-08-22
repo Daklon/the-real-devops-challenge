@@ -21,7 +21,7 @@ resource "aws_rds_cluster" "main" {
   master_username             = var.rds_master_username
   manage_master_user_password = true
   skip_final_snapshot         = true
-  vpc_security_group_ids = [aws_security_group.rds.id]
+  vpc_security_group_ids      = [aws_security_group.rds.id]
 
   serverlessv2_scaling_configuration {
     max_capacity = 1.0
