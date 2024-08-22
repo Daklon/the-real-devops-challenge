@@ -3,7 +3,6 @@ resource "aws_launch_template" "main" {
   image_id      = var.asg_ami
   instance_type = var.asg_instance_type
   user_data     = filebase64("${path.module}/install-web-server.sh")
-  key_name      = "deployer-key"
   vpc_security_group_ids = [aws_security_group.autoscaling_group.id]
 
   iam_instance_profile {

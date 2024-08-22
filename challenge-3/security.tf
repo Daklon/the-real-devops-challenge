@@ -80,7 +80,7 @@ resource "aws_security_group_rule" "asg_allow_ssh_ipv4_ingress" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.autoscaling_group.id
 }
-/*
+
 resource "aws_security_group_rule" "asg_allow_postgres_ipv4_egress" {
   type              = "egress"
   from_port         = aws_rds_cluster.main.port
@@ -125,4 +125,4 @@ resource "aws_security_group_rule" "rds_allow_postgres_ipv4_egress" {
   protocol          = "tcp"
   source_security_group_id = aws_security_group.autoscaling_group.id
   security_group_id = aws_security_group.rds.id
-}*/
+}

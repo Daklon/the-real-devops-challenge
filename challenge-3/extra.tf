@@ -2,8 +2,3 @@
 resource "aws_ec2_instance_connect_endpoint" "main" {
   subnet_id = aws_subnet.private["a"].id
 }
-
-resource "aws_key_pair" "deployer" {
-  key_name   = "deployer-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCy8A3+qyZDeGx6zYnMnYZslY2wT4ZEv800lmKEWjBQNTzCDgqLIUu2EMTRUyH9qg2Oq+bBlYzlaPSZ7WSlp5X/dqme8Eu4OFcpo/Gqwt3V4scJLLNvonWyVtUUcFGR7qtgGDpZn5xXG+Rt0lMAP17ltnWQ1QSQEN6CK1ZaS9zsMGnVClJ4AMWUc37uGaiq4LjklAUNu7NGqJwrnRgsaRivER73MsuncQFtzhR9She3qZOioAltAwkIxqGXjYA6B4cOjLnuDYxYt1cL9+chGKF6CluY3uKrtIcDyPAxDtGSYyjQBHiycET8TAV4Geq7cZoWI0/wvkWboT4296FoUbVHWlqXoXQoHKJWU45yh0cf7dADUQjH+Z1n9AaMD5nLZ5q2eXQwuMkaNvwSPS0TpmXmMSh670A45uQBvxUZjIjSuI/3VNydZ4vAvUd1p/BXCZ7C2XhMXmcETQu3GD+skipJf8oyforfzvYPPl4MJKnr/PqNWjaiEp0LJY7ACd1DPfc= javi@hyperion"
-}

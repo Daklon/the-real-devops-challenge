@@ -1,4 +1,3 @@
-/*
 resource "aws_db_subnet_group" "main" {
   name       = "mysql_subnet_group"
   subnet_ids = [for subnet in aws_subnet.private : subnet.id]
@@ -29,4 +28,3 @@ resource "aws_rds_cluster" "main" {
     min_capacity = 0.5
   }
 }
-*/
