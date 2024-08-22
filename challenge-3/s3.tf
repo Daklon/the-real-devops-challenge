@@ -23,7 +23,7 @@ resource "aws_s3_bucket_policy" "allow_access_from_asg" {
           "s3:ListBucket"
         ]
         Resource = [
-          "${aws_s3_bucket.main.arn}",
+          aws_s3_bucket.main.arn,
           "${aws_s3_bucket.main.arn}/*"
         ]
       }

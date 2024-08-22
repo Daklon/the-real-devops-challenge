@@ -1,3 +1,4 @@
 output "lb_address" {
-  value = aws_lb.main.dns_name
+  description = "The load balancer address"
+  value       = aws_lb.main.dns_name
 }

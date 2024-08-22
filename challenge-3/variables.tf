@@ -5,32 +5,48 @@ variable "vpc_cidr" {
 }
 
 variable "subnets" {
-  description = "list of subnets"
+  description = "public and private subnets with associated az"
+  type = object({
+    private = map(object({
+      az   = string
+      cidr = string
+    }))
+    public = map(object({
+      az   = string
+      cidr = string
+    }))
+  })
 }
 
 variable "bucket_name" {
   description = "Name for the s3 bucket"
+  type        = string
 }
 
 variable "asg_instance_type" {
   description = "Instance type for the autoscaling group"
+  type        = string
   default     = "t3.micro"
 }
 
 variable "asg_ami" {
   description = "ami to be used by the autoscaling group instances"
+  type        = string
 }
 
 variable "asg_desired_capacity" {
   description = "desired capacity for the autoscaling group instances"
+  type        = number
 }
 
 variable "asg_max_size" {
   description = "max size for the autoscaling group instances"
+  type        = number
 }
 
 variable "asg_min_size" {
   description = "min size the autoscaling group instances"
+  type        = number
 }
 
 variable "scaling_threshold" {
@@ -53,10 +69,12 @@ variable "rds_instance_class" {
 
 variable "rds_allocated_storage" {
   description = "size in gb for the db storage"
+  type        = number
   default     = 100
 }
 
 variable "rds_master_username" {
   description = "username for the rds cluster"
+  type        = string
   default     = "dbuser"
 }

@@ -12,7 +12,7 @@ resource "aws_iam_policy" "s3_read_policy" {
         ]
         Effect = "Allow"
         Resource = [
-          "${aws_s3_bucket.main.arn}",
+          aws_s3_bucket.main.arn,
           "${aws_s3_bucket.main.arn}/*"
         ]
       }
