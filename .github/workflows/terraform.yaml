@@ -22,6 +22,7 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           working_directory: "challenge-3"
+          tflint_init: true
           fail_on_error: "false"
           filter_mode: "nofilter"
           flags: "-c .tflint.hcl"
