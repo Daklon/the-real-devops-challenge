@@ -58,5 +58,5 @@ variable "rds_allocated_storage" {
 
 variable "rds_master_username" {
   description = "username for the rds cluster"
-  default = "user"
+  default = "dbuser"
 }
